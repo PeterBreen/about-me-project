@@ -6,10 +6,12 @@ alert('Welcome to the Guessing Game!');
 alert('Are you ready to get started?');
 
 function yourName() {
+  var pTagName = document.getElementById('ans-name');
   var questionName = 'What is your name?';
   var userName = prompt(questionName);
   questionsArray.push(questionName);
   answersArray.push(userName);
+  pTagName.textContent = userName;
   console.log('User\'s name is ' + userName);
   return userName;
 }
