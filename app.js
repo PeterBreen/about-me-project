@@ -62,7 +62,7 @@ function homeTown() {
     console.log(userName + ' knew that I was from Chicago');
     correctAnswers++;
   } else {
-    pTagThree.textContent = 'No, I grew up in Chicago!';
+    pTagThree.textContent = 'That is not right, I grew up in Chicago!';
     console.log(userName + ' did not know I grew up in Chicago.');
   }
 }
@@ -76,7 +76,7 @@ function haveDog() {
   var answerFour = prompt(questionFour);
   questionsArray.push(questionFour);
   answersArray.push(answerFour);
-  pTagFour.textContent = 'You think you know what type of dog I have.';
+  pTagFour.textContent = 'You think you can guess...let\'s find out.';
   answerFour = answerFour.toUpperCase();
   if (answerFour === 'YES') {
     var typeOfDog = prompt(questionFive);
