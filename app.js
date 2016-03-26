@@ -1,14 +1,14 @@
 var userName;
 var questionsArray = [];
 var answersArray = [];
+var correctAnswers = 0;
 
-alert('Welcome to the Guessing Game!');
-alert('Are you ready to get started?');
+alert('Welcome to the Guessing Game! Are you ready to get started?');
 
 function yourName() {
   var pTagName = document.getElementById('ans-name');
   var questionName = 'What is your name?';
-  var userName = prompt(questionName);
+  userName = prompt(questionName);
   questionsArray.push(questionName);
   answersArray.push(userName);
   pTagName.textContent = userName;
@@ -19,13 +19,16 @@ function yourName() {
 //Understanding of yes/no questions
 function understandQuestion() {
   var pTagOne = document.getElementById('ans-one');
-  var questionOne = 'Please answer all questions with a yes or no. Do you understand the instructions?';
+  var questionOne = 'Please answer all questions (unless specified) with a yes or no. Do you understand the instructions?';
   var answerOne = prompt(questionOne);
   questionsArray.push(questionOne);
   answersArray.push(answerOne);
-  pTagOne.textContent = answerOne;
   answerOne = answerOne.toUpperCase();
-  console.log(answerOne + ', ' + userName + ', understands instructions');
+  if (answerOne === 'YES') {
+    pTagOne.textContent = userName + ' understands instructions.';
+  } else {
+    pTagOne.textContent = userName + ' does not understand, but too bad!';
+  }
 }
 
 //Asking user to play the guessing game
@@ -37,11 +40,12 @@ function knowMore() {
   answersArray.push(answerTwo);
   answerTwo = answerTwo.toUpperCase();
   if (answerTwo === 'YES') {
-    pTagTwo.textContent = 'I would like to know more information';
-    console.log('User would like to know more information');
+    pTagTwo.textContent = userName + ' would like to know more information';
+    console.log(userName + ' would like to know more information');
+    correctAnswers++;
   } else {
     pTagTwo.textContent = 'Too bad, I am going to tell you things anyway!';
-    console.log('Too bad, I am going to tell you things anyway!');
+    console.log('Too bad, ' + userName + ' I am going to tell you things anyway!');
   }
 }
 
@@ -56,6 +60,7 @@ function homeTown() {
   if (answerThree === 'YES') {
     pTagThree.textContent = 'Yes, I grew up in Chicago!';
     console.log(userName + ' knew that I was from Chicago');
+    correctAnswers++;
   } else {
     pTagThree.textContent = 'No, I grew up in Chicago!';
     console.log(userName + ' did not know I grew up in Chicago.');
@@ -66,8 +71,8 @@ function homeTown() {
 function haveDog() {
   var pTagFour = document.getElementById('ans-four');
   var pTagFive = document.getElementById('ans-five');
-  var questionFour = 'Do you know what type of dog I have?';
-  var questionFive = 'Ok, hotshot! What type of dog do I have?';
+  var questionFour = 'Do you think you can guess what type of dog I have?';
+  var questionFive = 'Ok, hotshot! What type of dog do I have? (for this question don\'t answer yes/no)';
   var answerFour = prompt(questionFour);
   questionsArray.push(questionFour);
   answersArray.push(answerFour);
@@ -99,4 +104,4 @@ understandQuestion();
 knowMore();
 homeTown();
 haveDog();
-console.log('Game complete. Thank ' + userName + ' for playing!');
+alert('Game complete. Thank you for playing!');
