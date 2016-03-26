@@ -12,7 +12,6 @@ function yourName() {
   questionsArray.push(questionName);
   answersArray.push(userName);
   pTagName.textContent = userName;
-  console.log('User\'s name is ' + userName);
   return userName;
 }
 
@@ -26,6 +25,7 @@ function understandQuestion() {
   answerOne = answerOne.toUpperCase();
   if (answerOne === 'YES') {
     pTagOne.textContent = userName + ' understands instructions.';
+    correctAnswers++;
   } else {
     pTagOne.textContent = userName + ' does not understand, but too bad!';
   }
@@ -41,11 +41,9 @@ function knowMore() {
   answerTwo = answerTwo.toUpperCase();
   if (answerTwo === 'YES') {
     pTagTwo.textContent = userName + ' would like to know more information';
-    console.log(userName + ' would like to know more information');
     correctAnswers++;
   } else {
     pTagTwo.textContent = 'Too bad, I am going to tell you things anyway!';
-    console.log('Too bad, ' + userName + ' I am going to tell you things anyway!');
   }
 }
 
@@ -59,11 +57,9 @@ function homeTown() {
   answerThree = answerThree.toUpperCase();
   if (answerThree === 'YES') {
     pTagThree.textContent = 'Yes, I grew up in Chicago!';
-    console.log(userName + ' knew that I was from Chicago');
     correctAnswers++;
   } else {
     pTagThree.textContent = 'That is not right, I grew up in Chicago!';
-    console.log(userName + ' did not know I grew up in Chicago.');
   }
 }
 
@@ -79,12 +75,14 @@ function haveDog() {
   pTagFour.textContent = 'You think you can guess...let\'s find out.';
   answerFour = answerFour.toUpperCase();
   if (answerFour === 'YES') {
+    correctAnswers++;
     var typeOfDog = prompt(questionFive);
     questionsArray.push(questionFive);
     answersArray.push(typeOfDog);
     typeOfDog = typeOfDog.toUpperCase();
     if (typeOfDog === 'CHIHUAHUA') {
       //alert('You got it right!');
+      correctAnswers++;
       pTagFive.textContent = 'You got it right! I have a chihuahua.';
     } else {
       //alert('No! You are wrong!');
@@ -104,4 +102,4 @@ understandQuestion();
 knowMore();
 homeTown();
 haveDog();
-alert('Game complete. Thank you for playing!');
+alert('Game complete. Thank you for playing! You got ' + correctAnswers + ' questions out of 5 correct.');
